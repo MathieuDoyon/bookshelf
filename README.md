@@ -13,9 +13,10 @@ Dependencies:
  Get Started:
 
  - [Install](#install)
- - [Starting Server](#start)
- - [Using](#Using)
- - [TODOs](#TODOs)
+ - [Starting Server](#starting-server)
+ - [Using](#using)
+ - [Test](#test)
+ - [TODOs](#todos)
 
  ----------
 [Install](#install)
@@ -33,7 +34,7 @@ make install
 dep ensure
 ```
  ----------
-[Starting Server](#start)
+[Starting Server](#starting-server)
 -------
 It will start the server into docker with live reload
 ```
@@ -73,7 +74,7 @@ http PUT :8080/books/{ID} genre="SCI FI & FANTASY"
 ```
 
  ----------
-[Test](#Test)
+[Test](#test)
 -------
 Run test with makefile
 ```
@@ -81,6 +82,6 @@ make test
 ```
 
  ----------
-[TODOs](#TODOs)
+[TODOs](#todos)
 -------
 - [ ] Dockerfile (production)
