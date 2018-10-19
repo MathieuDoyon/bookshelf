@@ -51,9 +51,25 @@ export $(cat ./.env | xargs)
 
 HTTPie
 ```
-http GET :8080/books/
+# Add a new book into bookshelf
+http POST :8080/books < ./fixtures/book.json
+
+http POST :8080/books author="Mathieu Doyon" genre=Fiction number_of_pages:=345 publication_year:=2020 rating:=5
+
+# Get list of books
+http GET :8080/books/ 
+
+# Get list of book with filters
+# All book properties can be added as query string to filter the request.
+# author, genre, number_of_pages, publication_year, rating
 http GET :8080/books/ rating==4 sort==author direction==-1
-http GET :8080/books/5bc87da0722b8d59d30658ee
+
+# Get a specific book by Mongo Object ID
+http GET :8080/books/{ID}
+
+# Update a book
+http PUT :8080/books/{ID} genre="SCI FI & FANTASY"
+
 ```
 
  ----------
