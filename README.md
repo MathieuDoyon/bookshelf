@@ -75,5 +75,4 @@ http PUT :8080/books/{ID} genre="SCI FI & FANTASY"
  ----------
 [TODOs](#TODOs)
 -------
-- [ ] Add code documention
 - [ ] Dockerfile (production)
