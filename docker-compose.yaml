@@ -1,0 +1,23 @@
+version: '3'
+services:
+  database:
+    image: mongo:4.1
+    restart: always
+    ports:
+      - "27017:27017"
+    logging:
+      driver: none
+  server:
+    container_name: "server"
+    build:
+      context: "./docker/go"
+      dockerfile: Dockerfile.development
+    volumes:
+      - ".:${GO_PROJECT_DIR}"
+    ports:
+      - "8080:8080"
+    environment:
+      GO_WORK_DIR: "${GO_PROJECT_DIR}/server"
+      BOOKSHELF_DB_HOST: "mongodb://database:27017"
+    depends_on:
+     - database
