@@ -50,38 +50,3 @@ func TestBookList(t *testing.T) {
 	repoMock.AssertNumberOfCalls(t, "List", 1)
 	repoMock.AssertExpectations(t)
 }
-
-// func TestBookGet(t *testing.T) {
-// 	expected := &model.Book{
-// 		Author: "Mathieu Doyon",
-// 	}
-
-// 	repoMock := &mocks.IBookRepository{}
-// 	repoMock.On("Get", "fooooooo").Return(expected, nil) // mock the expectation
-
-// 	bookResource := BooksResource{
-// 		Repo: repoMock,
-// 	}
-
-// 	// call the code we are testing
-// 	req := httptest.NewRequest("GET", "http://localhost:8080/books/fooooooo", nil)
-// 	w := httptest.NewRecorder()
-
-// 	r := chi.NewRouter()
-// 	// r.HandleFunc("/books/{id}", bookResource.Get)
-// 	r.Route("/{id}", func(r chi.Router) {
-// 		r.Use(bookResource.BookCtx)
-// 		r.Get("/", bookResource.Get)
-// 	})
-
-// 	r.ServeHTTP(w, req)
-
-// 	response := model.Book{}
-
-// 	json.NewDecoder(w.Body).Decode(&response)
-
-// 	// assert that the expectations were met
-// 	// assert.Equal(t, expected, response)
-// 	repoMock.AssertNumberOfCalls(t, "Get", 1)
-// 	repoMock.AssertExpectations(t)
-// }
