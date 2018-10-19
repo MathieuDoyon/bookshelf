@@ -21,3 +21,6 @@ serve: serve-dev
 
 serve-dev: ## serve go with hot reload
 	@docker-compose up
+
+test:
+	cd server; go test ./...

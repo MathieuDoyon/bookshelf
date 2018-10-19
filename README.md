@@ -73,6 +73,14 @@ http PUT :8080/books/{ID} genre="SCI FI & FANTASY"
 ```
 
  ----------
+[Test](#Test)
+-------
+Run test with makefile
+```
+make test
+```
+
+ ----------
 [TODOs](#TODOs)
 -------
 - [ ] Dockerfile (production)
