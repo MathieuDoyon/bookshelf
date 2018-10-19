@@ -14,6 +14,7 @@ import (
 	"github.com/mongodb/mongo-go-driver/bson/objectid"
 )
 
+// BooksResource Book router ressources routes
 type BooksResource struct {
 	Repo interfaces.IBookRepository
 	// Repo *repositories.BookRepo
@@ -37,6 +38,7 @@ func (rs *BooksResource) Routes() chi.Router {
 	return r
 }
 
+// List Get all books and filter by query string and sorts
 func (rs *BooksResource) List(w http.ResponseWriter, r *http.Request) {
 	numberOfPages, err := strconv.ParseInt(r.URL.Query().Get("number_of_pages"), 10, 64)
 	yearOfPublication, err := strconv.ParseInt(r.URL.Query().Get("publication_year"), 10, 64)
@@ -97,6 +99,7 @@ func (rs *BooksResource) List(w http.ResponseWriter, r *http.Request) {
 	render.JSON(w, r, books)
 }
 
+// Create Add a new book into collection
 func (rs *BooksResource) Create(w http.ResponseWriter, r *http.Request) {
 	data := &model.BookRequest{}
 
@@ -113,6 +116,7 @@ func (rs *BooksResource) Create(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Get get a book by ID
 func (rs *BooksResource) Get(w http.ResponseWriter, r *http.Request) {
 	book := r.Context().Value("book").(*model.Book)
 
@@ -120,6 +124,7 @@ func (rs *BooksResource) Get(w http.ResponseWriter, r *http.Request) {
 	render.JSON(w, r, &book)
 }
 
+// Update update a book
 func (rs *BooksResource) Update(w http.ResponseWriter, r *http.Request) {
 	book := r.Context().Value("book").(*model.Book)
 
@@ -138,6 +143,7 @@ func (rs *BooksResource) Update(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Delete remove a book into your bookshelf by ID
 func (rs *BooksResource) Delete(w http.ResponseWriter, r *http.Request) {
 	book := r.Context().Value("book").(*model.Book)
 
@@ -149,6 +155,7 @@ func (rs *BooksResource) Delete(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// BookCtx build book context and inject `model.Book` into request
 func (rs *BooksResource) BookCtx(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var book *model.Book

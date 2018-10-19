@@ -5,6 +5,7 @@ import (
 	"strconv"
 )
 
+// ParseString Parse string to String
 func ParseString(s string, dest interface{}) error {
 	d, ok := dest.(*string)
 	if !ok {
@@ -15,6 +16,7 @@ func ParseString(s string, dest interface{}) error {
 	return nil
 }
 
+// ParseBool Parse string to Bool
 func ParseBool(s string, dest interface{}) error {
 	d, ok := dest.(*bool)
 	if !ok {
@@ -25,6 +27,7 @@ func ParseBool(s string, dest interface{}) error {
 	return nil
 }
 
+// ParseInt32 Parse string to Int32
 func ParseInt32(s string, dest interface{}) error {
 	d, ok := dest.(*int32)
 	if !ok {
@@ -38,6 +41,7 @@ func ParseInt32(s string, dest interface{}) error {
 	return nil
 }
 
+// ParseInt Parse string to Int
 func ParseInt(s string, dest interface{}) error {
 	d, ok := dest.(*int)
 	if !ok {

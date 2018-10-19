@@ -13,10 +13,12 @@ import (
 	"github.com/mongodb/mongo-go-driver/mongo/findopt"
 )
 
+// BookRepo book repository
 type BookRepo struct {
 	interfaces.IBookRepository
 }
 
+// List query database to return list of books
 func (repo *BookRepo) List(filters *model.BookFilter, sorting *model.Sorting) ([]model.Book, error) {
 	collection := db.Database.Collection("books")
 
@@ -81,6 +83,7 @@ func (repo *BookRepo) List(filters *model.BookFilter, sorting *model.Sorting) ([
 	return books, nil
 }
 
+// Create add a new book into database
 func (repo *BookRepo) Create(book *model.Book) (*model.Book, error) {
 	collection := db.Database.Collection("books")
 
@@ -93,6 +96,7 @@ func (repo *BookRepo) Create(book *model.Book) (*model.Book, error) {
 	return book, nil
 }
 
+// Get get a book by ID into database
 func (repo *BookRepo) Get(ID string) (*model.Book, error) {
 	collection := db.Database.Collection("books")
 
@@ -112,6 +116,7 @@ func (repo *BookRepo) Get(ID string) (*model.Book, error) {
 	return book, nil
 }
 
+// Update update a book by ID
 func (repo *BookRepo) Update(book *model.Book) (*model.Book, error) {
 	collection := db.Database.Collection("books")
 
@@ -140,6 +145,7 @@ func (repo *BookRepo) Update(book *model.Book) (*model.Book, error) {
 	return book, nil
 }
 
+// Delete remove a book from database
 func (repo *BookRepo) Delete(ID objectid.ObjectID) (int64, error) {
 	collection := db.Database.Collection("books")
 

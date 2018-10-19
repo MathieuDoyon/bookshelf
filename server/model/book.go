@@ -7,7 +7,7 @@ import (
 	"github.com/mongodb/mongo-go-driver/bson/objectid"
 )
 
-// Book book structure
+// Book book model structure
 type Book struct {
 	ID                objectid.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
 	Author            string            `bson:"author" json:"author"`
@@ -17,6 +17,7 @@ type Book struct {
 	Rating            int64             `bson:"rating" json:"rating"`
 }
 
+// BookFilter book filter model structure
 type BookFilter struct {
 	ID                objectid.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
 	Author            string            `bson:"author" json:"author"`
@@ -26,12 +27,14 @@ type BookFilter struct {
 	Rating            int64             `bson:"rating" json:"rating"`
 }
 
+// BookRequest small hack to protect ID of being posted and update from body payload
 type BookRequest struct {
 	*Book
 
 	ProtectedID string `json:"_id"` // override '_id' json to have more control
 }
 
+// Bind bind body into book struct
 func (b *BookRequest) Bind(r *http.Request) error {
 	// b.Book is nil if no Book fields are sent in the request. Return an
 	// error to avoid a nil pointer dereference.

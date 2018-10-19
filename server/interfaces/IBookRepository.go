@@ -7,6 +7,7 @@ import (
 	"github.com/mongodb/mongo-go-driver/bson/objectid"
 )
 
+// IBookRepository Book repository interface
 type IBookRepository interface {
 	List(filters *model.BookFilter, sorting *model.Sorting) ([]model.Book, error)
 	Create(book *model.Book) (*model.Book, error)
