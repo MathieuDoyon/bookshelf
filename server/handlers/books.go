@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -166,7 +165,6 @@ func (rs *BooksResource) BookCtx(next http.Handler) http.Handler {
 			return
 		}
 
-		fmt.Println("FOOOOOOOOOOOOOO")
 		ctx := context.WithValue(r.Context(), "book", book)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
